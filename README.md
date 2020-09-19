@@ -38,7 +38,7 @@ The server has:
       "password": "<password_for_register>"
     }
     ```
-  * Request(201)
+  * Response(201)
     ```
     {
       "id" : "<id_generated_by_system>"
@@ -48,7 +48,7 @@ The server has:
       "updatedAt": "2020-03-20T07:15:12.149Z"
     }
     ```
-  * Request (400)
+  * Response (400)
     ```
     {
       "message" : "ValidationError"
@@ -67,13 +67,13 @@ The server has:
       "password": "<password_for_login>"
     }
     ```
-  * Request(200)
+  * Response(200)
     ```
     {
       "accessToken": "<access_token_JWT>"
     }
     ```
-  * Request(400)
+  * Response(400)
     ```
     {
       "message" : "ValidationError"

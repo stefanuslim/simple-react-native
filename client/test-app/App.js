@@ -15,7 +15,10 @@ export default function App() {
 
 const AppStackNavigator = createStackNavigator({
   Main: {
-    screen:Main
+    screen:Main,
+    navigationOptions: () => ({
+          headerShown: false,
+    }),
   },
 })
 

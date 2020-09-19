@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { View, ActivityIndicator, AsyncStorage, StyleSheet } from 'react-native';
+import { View, ActivityIndicator, AsyncStorage } from 'react-native';
 
 
 const AuthLoad = ({ navigation }) => {
@@ -14,16 +14,10 @@ const AuthLoad = ({ navigation }) => {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={{flex:1}}>
     <ActivityIndicator/>
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex:1
-  },
-})
 
 export default AuthLoad

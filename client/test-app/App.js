@@ -1,10 +1,11 @@
 import React from 'react';
-import { createAppContainer } from 'react-navigation'
+import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 import LoginRegister from './scr/LoginRegister'
 import Register from './scr/Register'
 import Login from './scr/Login'
 import Main from './scr/Main'
+import AuthLoad from './scr/AuthLoad'
 
 export default function App() {
   return (
@@ -13,6 +14,12 @@ export default function App() {
 }
 
 const AppStackNavigator = createStackNavigator({
+  Main: {
+    screen:Main
+  },
+})
+
+const AuthStackNavigator = createStackNavigator({
   LoginRegister: {
   screen:LoginRegister,
     navigationOptions: () => ({
@@ -35,7 +42,10 @@ const AppStackNavigator = createStackNavigator({
           headerTintColor:'white'
     }),
   },
-  Main: Main
 })
 
-const AppNavigator = createAppContainer(AppStackNavigator)
+const AppNavigator = createAppContainer(createSwitchNavigator({
+  AuthLoad:AuthLoad,
+  AppStackNavigator:AppStackNavigator,
+  AuthStackNavigator:AuthStackNavigator
+}))

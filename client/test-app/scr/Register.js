@@ -1,9 +1,39 @@
-import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity,Dimensions, TextInput, KeyboardAvoidingView } from 'react-native';
+import React, {useState} from 'react';
+import { StyleSheet, Text, View, TouchableOpacity,Dimensions, TextInput, KeyboardAvoidingView, Alert } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 
-const Register = () => {
+const Register = ({navigation}) => {
+  const [email,setEmail] = useState('')
+  const [pass, setPass] = useState('')
+
+
+  const handleRegister = () => {
+    fetch('http://192.168.1.89:3000/register', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: email,
+        password: pass,
+      }),
+    })
+    .then((response) => response.json())
+    .then((res)=>{
+      if(res.message){
+        Alert.alert('Register Failed')
+      }
+      else{
+        navigation.navigate('Login')
+      }
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+  }
+
   return (
     <LinearGradient
         colors={['#3549FB', '#4ED2DA']}
@@ -27,13 +57,16 @@ const Register = () => {
     <TextInput
       style={styles.emailInput}
       placeholder='Email'
+      onChangeText={email => setEmail(email)}
     />
     <TextInput
       style={styles.passwordInput}
       placeholder='Password'
       secureTextEntry={true}
+      onChangeText={pass => setPass(pass)}
     />
     <TouchableOpacity
+        onPress={() => handleRegister()}
         style={styles.registerButton}>
         <Text style={styles.registerButtonText}>Register Account</Text>
     </TouchableOpacity>

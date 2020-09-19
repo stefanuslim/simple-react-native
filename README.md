@@ -16,6 +16,9 @@ Clone or download the repository and install the dependencies. Open the project 
   # Install dependencies
   npm install
 
+  # Config database and environment variables
+  modify config database and add secret to env
+
   # Start the project
   server (node app.js) & client/test-app (expo start)
 ```

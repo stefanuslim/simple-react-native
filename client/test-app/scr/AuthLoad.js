@@ -9,12 +9,12 @@ const AuthLoad = ({ navigation }) => {
   },[])
 
   const loadData = async() => {
-    const isLogin = await AsyncStorage.getItem('accessToken')
+    const isLogin = await AsyncStorage.removeItem('accessToken')
     navigation.navigate(!isLogin ? 'AuthStackNavigator' : 'AppStackNavigator')
   }
 
   return (
-    <View style={{flex:1}}>
+    <View style={{flex:1, alignItems: 'center', justifyContent: 'center',}}>
     <ActivityIndicator/>
     </View>
   )

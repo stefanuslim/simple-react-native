@@ -49,6 +49,9 @@ class UserController {
         next(err)
       })
     }
+    static getData(req,res,next){
+      res.status(200).json({message:"Welcome To The App"})
+    }
 }
 
 

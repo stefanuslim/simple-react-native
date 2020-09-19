@@ -22,6 +22,24 @@ module.exports = (sequelize, DataTypes) => {
           args:true,
           msg: "Email is required"
         },
+        isUnique(value,next) {
+          User.findOne({
+            where:{
+              email: value
+            }
+          })
+          .then(data=>{
+            if(data){
+              throw new Error("Email already registered")
+            }
+            else{
+              next()
+            }
+          })
+          .catch(err=>{
+            next(err)
+          })
+        },
         isEmail: true
       }
     },

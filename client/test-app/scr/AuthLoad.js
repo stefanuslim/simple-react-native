@@ -9,7 +9,7 @@ const AuthLoad = ({ navigation }) => {
   },[])
 
   const loadData = async() => {
-    const isLogin = await AsyncStorage.removeItem('accessToken')
+    const isLogin = await AsyncStorage.getItem('accessToken')
     navigation.navigate(!isLogin ? 'AuthStackNavigator' : 'AppStackNavigator')
   }
 

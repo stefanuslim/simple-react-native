@@ -1,90 +1,41 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity,Dimensions } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import { createAppContainer } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation-stack'
+import LoginRegister from './scr/LoginRegister'
+import Register from './scr/Register'
+import Login from './scr/Login'
+import Main from './scr/Main'
 
 export default function App() {
   return (
-    <LinearGradient
-        colors={['#3549FB', '#4ED2DA']}
-        start={[0, 0.2]}
-        end={[0, 0.5]}
-        location={[0.0002, 0.7493]}
-        style={{
-          position: 'absolute',
-          width: Dimensions.get('window').width,
-          height: Dimensions.get('window').height,
-          left: 0,
-          top: 0
-        }}
-    >
-    <View style={styles.container}>
-    <TouchableOpacity
-        onPress={() => alert('Hello, world!')}
-        style={styles.buttonRegister}>
-        <Text style={styles.registerText}>Register Account</Text>
-    </TouchableOpacity>
-    </View>
-    <View style={styles.container}>
-    <TouchableOpacity
-        onPress={() => alert('Hello, world!')}
-        style={styles.buttonLogin}>
-        <Text style={styles.loginText}>Login</Text>
-    </TouchableOpacity>
-    </View>
-    </LinearGradient>
+    <AppNavigator/>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center',
+const AppStackNavigator = createStackNavigator({
+  LoginRegister: {
+  screen:LoginRegister,
+    navigationOptions: () => ({
+          headerShown: false,
+    }),
   },
-  buttonRegister: {
-    borderRadius: 25.5,
-    backgroundColor: '#FFFFFF',
-    position: 'absolute',
-    width: 267,
-    height: 33,
-    left: 54,
-    top: Dimensions.get('window').height - ((Dimensions.get('window').height)*0.273)
+  Register: {
+    screen:Register,
+    navigationOptions: () => ({
+          headerTransparent: true,
+          title:'',
+          headerTintColor:'white'
+    }),
   },
-  buttonLogin: {
-    borderRadius: 25.5,
-    backgroundColor: '#FFFFFF',
-    position: 'absolute',
-    width: 267,
-    height: 33,
-    left: 54,
-    top: Dimensions.get('window').height - ((Dimensions.get('window').height)*0.1785)
+  Login:{
+    screen:Login,
+    navigationOptions: () => ({
+          headerTransparent: true,
+          title:'',
+          headerTintColor:'white'
+    }),
   },
-  registerText: {
-    position: 'absolute',
-    width: 128,
-    height: 19,
-    left: 70,
-    top: 7,
-    fontFamily: 'Roboto',
-    fontStyle: 'normal',
-    fontWeight: '500',
-    fontSize: 16.2857,
-    lineHeight: 19,
-    textAlign: 'center',
-    color: '#000000'
-  },
-  loginText: {
-    position: 'absolute',
-    width: 122,
-    height: 19,
-    left: 73,
-    top: 7,
-    fontFamily: 'Roboto',
-    fontStyle: 'normal',
-    fontWeight: '500',
-    fontSize: 16.2857,
-    lineHeight: 19,
-    textAlign: 'center',
-    color: '#000000'
-  },
-});
+  Main: Main
+})
+
+const AppNavigator = createAppContainer(AppStackNavigator)

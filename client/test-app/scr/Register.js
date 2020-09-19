@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity,Dimensions, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity,Dimensions, TextInput, KeyboardAvoidingView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 
@@ -18,6 +18,10 @@ const Register = () => {
           top: 0
         }}
     >
+    <KeyboardAvoidingView
+      behavior={"position"}
+      style={styles.container}
+    >
     <View style={styles.boxStyle}>
     <Text style={styles.registerTitleText}>Register New Account</Text>
     <TextInput
@@ -34,11 +38,15 @@ const Register = () => {
         <Text style={styles.registerButtonText}>Register Account</Text>
     </TouchableOpacity>
     </View>
+    </KeyboardAvoidingView>
     </LinearGradient>
   )
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex:1
+  },
   boxStyle: {
     backgroundColor: '#ffffff',
     borderRadius: 51,

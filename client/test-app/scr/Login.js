@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity,Dimensions, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity,Dimensions, TextInput, KeyboardAvoidingView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 
@@ -18,6 +18,10 @@ const Login = () => {
           top: 0
         }}
     >
+    <KeyboardAvoidingView
+      behavior={"position"}
+      style={styles.container}
+    >
     <View style={styles.boxStyle}>
     <Text style={styles.loginTitleText}>Login</Text>
     <TextInput
@@ -34,11 +38,15 @@ const Login = () => {
         <Text style={styles.loginButtonText}>Login</Text>
     </TouchableOpacity>
     </View>
+    </KeyboardAvoidingView>
     </LinearGradient>
   )
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex:1
+  },
   boxStyle: {
     backgroundColor: '#ffffff',
     borderRadius: 51,

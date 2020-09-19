@@ -19,6 +19,9 @@ Clone or download the repository and install the dependencies. Open the project 
   # Config database and environment variables
   modify config database and add secret to env
 
+  # Fetch API Client
+  modify fetch API url for local IP
+
   # Start the project
   server (node app.js) & client/test-app (expo start)
 ```
